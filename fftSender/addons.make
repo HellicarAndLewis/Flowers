@@ -1,3 +1,4 @@
 ofxFFT
 ofxGui
+ofxNestedFileLoader
 ofxOsc

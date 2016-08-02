@@ -7,6 +7,12 @@
 		<ClCompile Include="src\main.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\ofApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
 		<ClCompile Include="..\..\..\addons\ofxFFT\src\ofxFFTBase.cpp">
 			<Filter>addons\ofxFFT\src</Filter>
 		</ClCompile>
@@ -42,6 +48,9 @@
 		</ClCompile>
 		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
 			<Filter>addons\ofxGui\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxNestedFileLoader\src\ofxNestedFileLoader.cpp">
+			<Filter>addons\ofxNestedFileLoader\src</Filter>
 		</ClCompile>
 		<ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
 			<Filter>addons\ofxOsc\src</Filter>
@@ -102,6 +111,12 @@
 		<Filter Include="addons\ofxGui\src">
 			<UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
 		</Filter>
+		<Filter Include="addons\ofxNestedFileLoader">
+			<UniqueIdentifier>{1D4399C8-2D3B-7FE7-DD9D-3FF9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxNestedFileLoader\src">
+			<UniqueIdentifier>{8EB7360D-67B1-1427-CD57-E2EE}</UniqueIdentifier>
+		</Filter>
 		<Filter Include="addons\ofxOsc">
 			<UniqueIdentifier>{D91DCA33-6E5D-4481-2AEC-9FBB}</UniqueIdentifier>
 		</Filter>
@@ -128,6 +143,9 @@
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
+		<ClInclude Include="src\ofApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
 		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>
 		</ClInclude>
@@ -169,6 +187,9 @@
 		</ClInclude>
 		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
 			<Filter>addons\ofxGui\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxNestedFileLoader\src\ofxNestedFileLoader.h">
+			<Filter>addons\ofxNestedFileLoader\src</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
 			<Filter>addons\ofxOsc\src</Filter>

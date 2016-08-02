@@ -4,9 +4,12 @@
 #include "ofxFFTLive.h"
 #include "ofxGui.h"
 #include "ofxOsc.h"
+#include "ofxFFTFile.h"
+#include "ofxNestedFileLoader.h"
 
 #define HOST "localhost"
 #define PORT 12345
+//#define LIVE_INPUT
 
 class ofApp : public ofBaseApp {
 
@@ -24,8 +27,12 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-
-	ofxFFTLive fftLive;
+#ifdef LIVE_INPUT
+	ofxFFTLive fft;
+#else
+	ofxFFTFile fft;
+	ofSoundPlayer player;
+#endif
 
 	ofxPanel gui;
 	ofxSlider<float> audioThreshold;

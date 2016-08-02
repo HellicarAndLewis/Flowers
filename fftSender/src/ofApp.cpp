@@ -6,8 +6,8 @@ void ofApp::setup() {
 	ofBackground(50);
 	ofSetFrameRate(30);
 
-	fftLive.setMirrorData(false);
-	fftLive.setup();
+	fft.setMirrorData(false);
+	fft.setup();
 
 	string guiPath = "audio.xml";
 	gui.setup("audio", guiPath, 20, 20);
@@ -17,12 +17,24 @@ void ofApp::setup() {
 	gui.add(audioMirror.setup("audioMirror", false));
 	gui.loadFromFile(guiPath);
 
-	fftLive.setThreshold(audioThreshold);
-	fftLive.setPeakDecay(audioPeakDecay);
-	fftLive.setMaxDecay(audioMaxDecay);
-	fftLive.setMirrorData(audioMirror);
+	fft.setThreshold(audioThreshold);
+	fft.setPeakDecay(audioPeakDecay);
+	fft.setMaxDecay(audioMaxDecay);
+	fft.setMirrorData(audioMirror);
 
 	meshOriginal = meshWarped = ofMesh::sphere(200, 30);
+
+#ifndef LIVE_INPUT
+	ofxNestedFileLoader loader;
+	vector<string> audioFiles = loader.load("tracks");
+	if (audioFiles.size() > 0)
+		player.load(audioFiles[0]);
+	else
+		ofLogError("No audio files loaded because data/audio folder is empty!");
+	player.setLoop(true);
+	player.play();
+	player.setVolume(1.0);
+#endif
 
 	sender.setup(HOST, PORT);
 }
@@ -30,11 +42,11 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	fftLive.setThreshold(audioThreshold);
-	fftLive.setPeakDecay(audioPeakDecay);
-	fftLive.setMaxDecay(audioMaxDecay);
-	fftLive.setMirrorData(audioMirror);
-	fftLive.update();
+	fft.setThreshold(audioThreshold);
+	fft.setPeakDecay(audioPeakDecay);
+	fft.setMaxDecay(audioMaxDecay);
+	fft.setMirrorData(audioMirror);
+	fft.update();
 
 	//---------------------------------------------------------- dispacing mesh using audio.
 	vector<ofVec3f> & vertsOriginal = meshOriginal.getVertices();
@@ -42,8 +54,8 @@ void ofApp::update() {
 	int numOfVerts = meshOriginal.getNumVertices();
 
 	float * audioData = new float[numOfVerts];
-	fftLive.getFftPeakData(audioData, numOfVerts);
-	data = fftLive.getFftPeakData();
+	fft.getFftPeakData(audioData, numOfVerts);
+	data = fft.getFftPeakData();
 
 	float meshDisplacement = 100;
 
@@ -78,7 +90,7 @@ void ofApp::draw() {
 	int h = OFX_FFT_HEIGHT;
 	int x = 20;
 	int y = ofGetHeight() - h - 20;
-	fftLive.draw(x, y, w, h);
+	fft.draw(x, y, w, h);
 
 	ofSetColor(255);
 
